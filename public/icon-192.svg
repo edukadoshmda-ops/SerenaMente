@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="50%" stop-color="#6d28d9" />
+      <stop offset="100%" stop-color="#4338ca" />
+    </linearGradient>
+    <linearGradient id="heartGrad192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ede9fe" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo com Cantos Arredondados -->
+  <rect width="192" height="192" rx="52" fill="url(#bgGrad192)" />
+
+  <!-- Coração & Fone de Ouvido -->
+  <g transform="translate(0, -6)">
+    <path d="M96 156c-3 0-6-1-8-3-28-27-50-48-50-74 0-20 15-35 35-35 13 0 25 6 32 17 7-10 19-17 32-17 20 0 35 15 35 35 0 26-22 47-50 74-2 2-5 3-8 3z" fill="url(#heartGrad192)" />
+    <!-- Fone -->
+    <path d="M52 86 A 46 46 0 0 1 140 86" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" />
+    <rect x="46" y="80" width="10" height="20" rx="5" fill="#ffffff" />
+    <rect x="136" y="80" width="10" height="20" rx="5" fill="#ffffff" />
+  </g>
+</svg>

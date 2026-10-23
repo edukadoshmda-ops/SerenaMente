@@ -1,0 +1,25 @@
+# Logs e arquivos temporários
+_dom.txt
+_err.txt
+*.log
+
+# Dependências
+node_modules/
+dist/
+dist-ssr/
+
+# Arquivos de ambiente e segredos (NUNCA enviar para o GitHub público!)
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

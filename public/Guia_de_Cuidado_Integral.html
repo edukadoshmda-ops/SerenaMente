@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Guia de Cuidado Integral</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 20mm 20mm 18mm 20mm;
+    @bottom-left {
+      content: "Guia de Cuidado Integral";
+      font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+      font-size: 9pt;
+      color: #718096;
+    }
+    @bottom-right {
+      content: "Página " counter(page) " de " counter(pages);
+      font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+      font-size: 9pt;
+      color: #718096;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: #2D3748;
+    line-height: 1.55;
+    font-size: 10.5pt;
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    min-height: 250mm;
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child {
+    page-break-after: avoid;
+  }
+  .header-title {
+    color: #2B4C7E;
+    font-size: 26pt;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+  }
+  .header-sub {
+    font-size: 11.5pt;
+    font-style: italic;
+    color: #4A5568;
+    margin: 0 0 16px 0;
+  }
+  .header-line {
+    height: 3px;
+    background: #2B6CB0;
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+  .intro-text {
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: #2D3748;
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+  .aviso-box {
+    background: #F0F7FF;
+    border: 1px solid #BEE3F8;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 22px;
+  }
+  .aviso-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #2B4C7E;
+    font-size: 11pt;
+    margin-bottom: 4px;
+  }
+  .aviso-text {
+    font-size: 9.8pt;
+    color: #2D3748;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1A365D;
+    font-size: 13.5pt;
+    font-weight: 700;
+    margin: 18px 0 12px 0;
+  }
+  .section-title::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: #2B6CB0;
+    border-radius: 2px;
+  }
+  .img-banner {
+    width: 100%;
+    height: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #F59E0B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+  }
+  .img-banner-inner {
+    text-align: center;
+    color: #FFFFFF;
+    padding: 10px;
+  }
+  .img-banner-inner svg {
+    opacity: 0.9;
+    margin-bottom: 4px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .card {
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 14px 16px;
+    background: #FAFCFF;
+  }
+  .card-title {
+    font-weight: 700;
+    font-size: 11pt;
+    color: #1A202C;
+    margin-bottom: 8px;
+  }
+  .card ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .card li {
+    margin-bottom: 8px;
+    font-size: 9.8pt;
+    line-height: 1.45;
+  }
+  .bullet-list {
+    margin: 8px 0 16px 0;
+    padding-left: 18px;
+  }
+  .bullet-list li {
+    margin-bottom: 8px;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px 0;
+    font-size: 9.5pt;
+  }
+  th {
+    background: #F7FAFC;
+    color: #1A202C;
+    font-weight: 700;
+    border: 1px solid #CBD5E0;
+    padding: 8px 10px;
+    text-align: left;
+  }
+  td {
+    border: 1px solid #CBD5E0;
+    padding: 7px 10px;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #F8FAFC;
+  }
+  .lembrete-box {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-left: 4px solid #16A34A;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+  .lembrete-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #15803D;
+    font-size: 10.8pt;
+    margin-bottom: 4px;
+  }
+  .lembrete-text {
+    font-size: 9.8pt;
+    color: #1F2937;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .footer-custom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8.5pt;
+    color: #718096;
+    padding-top: 10px;
+    border-top: 1px solid #E2E8F0;
+  }
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 -->
+<div class="page">
+  <div class="header-title">Guia de Cuidado Integral</div>
+  <div class="header-sub">Orientações práticas para o equilíbrio da mente, do corpo e da alimentação</div>
+  <div class="header-line"></div>
+
+  <p class="intro-text">
+    A saúde mental e a saúde física estão profundamente interconectadas. O cuidado com quadros de ansiedade e depressão exige uma abordagem integrativa, que compreenda o indivíduo em sua totalidade. Este guia reúne orientações baseadas em evidências para auxiliar no resgate do bem-estar e da qualidade de vida.
+  </p>
+
+  <div class="aviso-box">
+    <div class="aviso-header">
+      <span>⚠️</span>
+      <span>Aviso Importante</span>
+    </div>
+    <p class="aviso-text">
+      Este material tem caráter informativo e de apoio. Ele não substitui o acompanhamento médico psiquiátrico, psicológico ou nutricional profissional.
+    </p>
+  </div>
+
+  <div class="section-title">
+    1. O Cuidado com a Mente (Saúde Emocional)
+  </div>
+
+  <div class="img-banner" style="background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #F59E0B 100%);">
+    <div class="img-banner-inner">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+      </svg>
+      <div style="font-size: 10pt; font-weight: 600; letter-spacing: 0.5px;">Equilíbrio & Consciência do Presente</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-title">Práticas Cognitivas</div>
+      <ul>
+        <li><strong>Validação:</strong> Permita-se sentir sem julgamentos severos.</li>
+        <li><strong>Aterramento (5-4-3-2-1):</strong> Identifique 5 coisas visíveis, 4 táteis, 3 auditivas, 2 olfativas e 1 gustativa.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Rotina e Limites</div>
+      <ul>
+        <li><strong>Micro-metas:</strong> Divida tarefas grandes em passos minúsculos.</li>
+        <li><strong>Desconexão digital:</strong> Reduza o tempo de tela e notícias alarmantes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-custom">
+    <span>Guia de Cuidado Integral</span>
+    <span>Página 1 de 2</span>
+  </div>
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="page" style="padding-top: 10px;">
+  <div class="section-title">
+    2. O Cuidado com o Corpo (Atividade Física e Sono)
+  </div>
+
+  <div class="img-banner" style="background: linear-gradient(135deg, #1E3A8A 0%, #0D9488 55%, #10B981 100%);">
+    <div class="img-banner-inner">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+        <line x1="6" y1="1" x2="6" y2="4"/>
+        <line x1="10" y1="1" x2="10" y2="4"/>
+        <line x1="14" y1="1" x2="14" y2="4"/>
+      </svg>
+      <div style="font-size: 10pt; font-weight: 600; letter-spacing: 0.5px;">Vitalidade Física & Descanso Reparador</div>
+    </div>
+  </div>
+
+  <ul class="bullet-list">
+    <li><strong>Atividade física leve a moderada:</strong> Caminhadas de 20 a 30 minutos diárias reduzem o cortisol e aliviam sintomas depressivos.</li>
+    <li><strong>Higiene do sono:</strong> Mantenha horários regulares para deitar e acordar, evitando telas 1 hora antes de dormir.</li>
+    <li><strong>Respiração diafragmática:</strong> Pratique respirações profundas para ativar o sistema nervoso parassimpático.</li>
+  </ul>
+
+  <div class="section-title">
+    3. Alimentação e Neurotransmissores
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 26%;">Nutriente / Foco</th>
+        <th style="width: 38%;">Benefício para Mente</th>
+        <th style="width: 36%;">Fontes Alimentares</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Triptofano</strong></td>
+        <td>Precursor da serotonina (humor e sono).</td>
+        <td>Banana, aveia, ovos, oleaginosas, frango.</td>
+      </tr>
+      <tr>
+        <td><strong>Ômega-3</strong></td>
+        <td>Ação anti-inflamatória cerebral e neuronal.</td>
+        <td>Peixes gordos, linhaça, chia.</td>
+      </tr>
+      <tr>
+        <td><strong>Magnésio / Comp. B</strong></td>
+        <td>Redução da fadiga mental e ansiedade.</td>
+        <td>Folhas verde-escuras, castanhas.</td>
+      </tr>
+      <tr>
+        <td><strong>Hidratação</strong></td>
+        <td>Evita quedas de energia e névoa mental.</td>
+        <td>Água, água de coco, chás calmantes.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="lembrete-box">
+    <div class="lembrete-header">
+      <span>💡</span>
+      <span>Lembrete de Apoio</span>
+    </div>
+    <p class="lembrete-text">
+      Se você ou alguém que você conhece está enfrentando momentos difíceis, busque ajuda profissional ou ligue para o <strong>CVV (Centro de Valorização da Vida)</strong> pelo número <strong>188</strong> (disponível 24h).
+    </p>
+  </div>
+
+  <div class="footer-custom">
+    <span>Guia de Cuidado Integral</span>
+    <span>Página 2 de 2</span>
+  </div>
+</div>
+
+</body>
+</html>
