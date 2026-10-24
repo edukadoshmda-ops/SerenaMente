@@ -3,7 +3,7 @@ import {
   Heart, ShieldAlert, Sparkles, Sun, Moon, LogOut, Flame, 
   Smartphone, Sliders, MessageCircle, Flower2, QrCode, 
   Menu, X, BookOpen, ChevronRight, User, Check, Smile, Film,
-  Key, Shield
+  Key, Shield, Crown, Star
 } from 'lucide-react';
 
 export default function Navbar({ 
@@ -65,11 +65,17 @@ export default function Navbar({
               <Menu className="w-4 h-4 text-calm-600 dark:text-calm-400 shrink-0" />
               <span className="hidden sm:inline">Menu</span>
               {user && (
-                <div className="w-5 h-5 rounded-full bg-calm-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
-                  {user.name?.charAt(0).toUpperCase()}
+                <div className={`w-5 h-5 rounded-full ${user.role === 'superAdmin' ? 'bg-gradient-to-r from-amber-500 to-rose-500' : 'bg-calm-600'} text-white text-[10px] font-bold flex items-center justify-center shrink-0`}>
+                  {user.role === 'superAdmin' ? '👑' : user.name?.charAt(0).toUpperCase()}
                 </div>
               )}
             </button>
+            {user?.role === 'superAdmin' && (
+              <span className="ml-2 hidden md:inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-600 dark:text-amber-400 text-[10px] font-black uppercase tracking-wider">
+                <Crown className="w-3 h-3 text-amber-500 fill-amber-500" />
+                <span>SuperAdmin</span>
+              </span>
+            )}
           </div>
 
           {/* CENTRO: LOGO SERENAMENTE CENTRALIZADO (IMAGEM 1 CENTRALIZADA) */}
@@ -162,15 +168,22 @@ export default function Navbar({
               {/* Card do Usuário */}
               <div className="p-3.5 sm:p-4 rounded-3xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/60 flex items-center justify-between">
                 <div className="flex items-center space-x-3 min-w-0">
-                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-calm-500 to-indigo-600 text-white flex items-center justify-center font-bold text-base shrink-0 shadow-md">
-                    {user ? user.name?.charAt(0).toUpperCase() : <User className="w-5 h-5" />}
+                  <div className={`w-11 h-11 rounded-2xl ${user?.role === 'superAdmin' ? 'bg-gradient-to-tr from-amber-500 via-orange-500 to-rose-600' : 'bg-gradient-to-tr from-calm-500 to-indigo-600'} text-white flex items-center justify-center font-bold text-base shrink-0 shadow-md`}>
+                    {user?.role === 'superAdmin' ? <Crown className="w-5 h-5 text-amber-100 fill-amber-200" /> : user ? user.name?.charAt(0).toUpperCase() : <User className="w-5 h-5" />}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-sm font-bold text-slate-800 dark:text-slate-100 truncate">
-                      {user ? user.name : 'Visitante Serena'}
-                    </h4>
-                    <p className="text-[11px] text-slate-400 truncate">
-                      {user ? (user.email || 'Conectado') : 'Modo Convidado'}
+                    <div className="flex items-center space-x-1.5">
+                      <h4 className="text-sm font-bold text-slate-800 dark:text-slate-100 truncate">
+                        {user ? user.name : 'Visitante'}
+                      </h4>
+                      {user?.role === 'superAdmin' && (
+                        <span className="px-1.5 py-0.5 rounded-md bg-amber-500 text-slate-950 text-[9px] font-black uppercase tracking-wider">
+                          Admin
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                      {user?.role === 'superAdmin' ? '👑 Acesso Total Irrestrito' : (user?.planName || user?.email || 'Membro Oficial')}
                     </p>
                   </div>
                 </div>

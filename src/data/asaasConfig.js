@@ -11,9 +11,9 @@ const DEFAULT_ASAAS_CONFIG = {
       priceFormatted: 'R$ 9,90',
       period: 'por mês',
       description: 'Ideal para experimentar o refúgio diário e dar os primeiros passos. De R$ 19,90 por R$ 9,90/mês.',
-      badge: 'Sem fidelidade',
+      badge: 'Cartão ou Pix',
       // Link de Pagamento Oficial Asaas:
-      paymentLink: 'https://www.asaas.com/000/c/znw37swbmbzvod0z',
+      paymentLink: 'https://www.asaas.com/000/c/6c8gl87rm97ltavn',
       features: [
         'Acesso completo a todos os Playbooks em Áudio',
         'Vozes profissionais feminina e masculina',
@@ -73,9 +73,11 @@ export const getAsaasConfig = () => {
     const saved = localStorage.getItem('serenamente_asaas_config');
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Sanitizar caso tenha links de teste antigos
-      if (parsed.plans?.mensal?.paymentLink && parsed.plans.mensal.paymentLink.includes('acolhimento-mensal')) {
+      // Sanitizar caso tenha links de teste antigos ou link anterior de 19,90
+      if (parsed.plans?.mensal?.paymentLink && (parsed.plans.mensal.paymentLink.includes('acolhimento-mensal') || parsed.plans.mensal.paymentLink.includes('znw37swbmbzvod0z'))) {
         parsed.plans.mensal.paymentLink = DEFAULT_ASAAS_CONFIG.plans.mensal.paymentLink;
+        parsed.plans.mensal.price = 9.90;
+        parsed.plans.mensal.priceFormatted = 'R$ 9,90';
       }
       if (parsed.plans?.anual?.paymentLink && parsed.plans.anual.paymentLink.includes('transformacao-anual-60off')) {
         parsed.plans.anual.paymentLink = DEFAULT_ASAAS_CONFIG.plans.anual.paymentLink;

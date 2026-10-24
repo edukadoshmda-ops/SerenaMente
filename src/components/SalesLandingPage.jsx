@@ -47,7 +47,7 @@ export default function SalesLandingPage({
 
   // Links do Asaas reais e ativos da sua conta
   const ASAAS_LINKS = {
-    mensal: 'https://www.asaas.com/000/c/znw37swbmbzvod0z',
+    mensal: 'https://www.asaas.com/000/c/6c8gl87rm97ltavn',
     anual: 'https://www.asaas.com/000/c/so98wzo06jbvo8dr',
     vitalicio: 'https://www.asaas.com/000/c/cpvg71k31t3ebq4i'
   };
@@ -181,13 +181,13 @@ export default function SalesLandingPage({
 
             <button
               onClick={onOpenLogin}
-              className="px-3 py-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+              className="px-3 py-2 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 transition-colors cursor-pointer"
             >
-              Já tenho conta
+              Já sou Aluno (Entrar)
             </button>
             <button
               onClick={onEnterAppDirectly}
-              className="px-4 sm:px-5 py-2 rounded-2xl bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 hover:to-indigo-500 text-white text-xs font-bold shadow-lg shadow-teal-500/20 transition-all flex items-center space-x-1.5 active:scale-95"
+              className="px-4 sm:px-5 py-2 rounded-2xl bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 hover:to-indigo-500 text-white text-xs font-extrabold shadow-lg shadow-teal-500/20 transition-all flex items-center space-x-1.5 active:scale-95 cursor-pointer"
             >
               <span>Acessar o App</span>
               <ArrowRight className="w-4 h-4" />
@@ -307,7 +307,7 @@ export default function SalesLandingPage({
               className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white hover:bg-slate-100 dark:bg-slate-900/80 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs sm:text-sm border border-slate-200 dark:border-slate-700 shadow-sm transition-all flex items-center justify-center space-x-2 cursor-pointer"
             >
               <Smartphone className="w-4 h-4 text-teal-500 dark:text-calm-400" />
-              <span>Experimentar o Aplicativo</span>
+              <span>Acessar Meu Plano / Entrar</span>
             </button>
           </div>
 

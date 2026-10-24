@@ -243,18 +243,13 @@ export default function App() {
           isDarkMode={isDarkMode}
           onToggleDarkMode={() => setIsDarkMode(!isDarkMode)}
           onEnterAppDirectly={() => {
-            // Entrar como convidado
-            const guestUser = {
-              id: `guest-${Date.now()}`,
-              name: 'Viajante Serena',
-              email: 'visitante@serenamente.app',
-              avatar: 'sun',
-              isGuest: true,
-              loginDate: new Date().toISOString()
-            };
-            localStorage.setItem('serena_user', JSON.stringify(guestUser));
-            setUser(guestUser);
-            setViewMode('app');
+            // Se já tem cadastro ativo em um plano ou é SuperAdmin, entra no app
+            if (user?.plan || user?.role === 'superAdmin') {
+              setViewMode('app');
+            } else {
+              // Caso contrário, precisa se cadastrar em um plano ou entrar com sua conta
+              setIsLoginOpen(true);
+            }
           }}
           onOpenPixCheckout={(val) => {
             setIsPixOpen(true);
